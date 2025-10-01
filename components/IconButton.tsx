@@ -6,18 +6,19 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 //Intefaces
 interface IconButtonProps {
     presionar?: () => void;
-    iconName: string; // Nombre del icono
+    name: string; // Nombre del icono
     color?: string; // Color de icono (Opcional)
+    bgColor?: string; // Color de fondo (Opcional)
 } 
 
 //Principal
-const IconButton = ({iconName, presionar, color}: IconButtonProps) => {
+const IconButton = ({name, presionar, color, bgColor='gray'}: IconButtonProps) => {
     return (
-        <View style={{margin: 5, borderRadius: 10, backgroundColor: 'gray', height: 40, width: 40, justifyContent: 'center', alignItems: 'center'}}>
+        <View style={{borderRadius: 10, backgroundColor: bgColor, height: 40, width: 40, justifyContent: 'center', alignItems: 'center'}}>
             <Pressable onPress={presionar}>
                 <AntDesign
-                    name={iconName as any}
-                    size={35}
+                    name={name as any}
+                    size={30}
                     color={color}
                 />
             </Pressable>

@@ -1,28 +1,23 @@
-import { useState } from "react";
-import { Pressable, Text, View } from "react-native";
-import IconButton from "../components/IconButton";
+import React, { useState } from "react";
+import { Dimensions, ImageBackground, View } from "react-native";
+import WelcomeScreen from "../components/WelcomeScreen";
+import { SafeAreaView } from "react-native-safe-area-context";
+import "../global.css"
+
 
 export default function Index() {
-
-  const [cont, setContador] = useState(0); //Hook
+  //const [cont, setContador] = useState(0); //Hook
+  const { width, height } = Dimensions.get("window");
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: '#6f4e37',
-        margin: '10%',
-        borderRadius: 40
-      }}
+    <ImageBackground
+      source={require("../assets/images/img_fondo.png")}
+      style={{width: width, height: height, flex: 1, justifyContent: "center", alignContent: "center"}}
+      resizeMode="cover"
     >
-      <Text style={{fontWeight: 'bold', fontSize: 40, color: 'white'}}>Contador</Text>
-      <Text style={{fontSize: 20, marginVertical: 20 }}>{cont}</Text>
-      <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-        <IconButton iconName="plus" color="green" presionar={() => setContador(cont + 1)}/>
-        <IconButton iconName="minus" color="red" presionar={() => setContador(cont - 1)}/>
-      </View>
-    </View>
+      <SafeAreaView className="flex-1">
+        <WelcomeScreen/>
+      </SafeAreaView>
+    </ImageBackground>
   );
 }
